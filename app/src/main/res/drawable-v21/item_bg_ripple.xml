@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!--按下波纹效果-->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/item_press">
+    <item android:drawable="@color/item_not_press"/>
+</ripple>
