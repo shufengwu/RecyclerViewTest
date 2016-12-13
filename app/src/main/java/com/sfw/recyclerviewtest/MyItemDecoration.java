@@ -31,7 +31,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
         if (mOrientation == HORIZONTAL_LIST){
 
         }else{
-            outRect.set(0,0,0,mDivider.getIntrinsicHeight());
+            outRect.set(0,0,mDivider.getIntrinsicHeight(),mDivider.getIntrinsicHeight());
         }
     }
 
@@ -84,10 +84,6 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
         left = right-mDivider.getIntrinsicHeight();
         mDivider.setBounds(left,top,right,bottom);
         mDivider.draw(c);*/
-
-    }
-
-    public void drawHerizontal(Canvas c, RecyclerView parent) {
 
     }
 

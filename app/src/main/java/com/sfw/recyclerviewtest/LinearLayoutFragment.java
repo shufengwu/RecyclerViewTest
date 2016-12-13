@@ -2,26 +2,17 @@ package com.sfw.recyclerviewtest;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.rohit.recycleritemclicksupport.RecyclerItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import it.gmariotti.recyclerview.itemanimator.ScaleInOutItemAnimator;
-import it.gmariotti.recyclerview.itemanimator.SlideInOutBottomItemAnimator;
-import it.gmariotti.recyclerview.itemanimator.SlideInOutLeftItemAnimator;
-import it.gmariotti.recyclerview.itemanimator.SlideInOutRightItemAnimator;
-import it.gmariotti.recyclerview.itemanimator.SlideInOutTopItemAnimator;
-import it.gmariotti.recyclerview.itemanimator.SlideScaleInOutRightItemAnimator;
+import jp.wasabeef.recyclerview.animators.FadeInRightAnimator;
 
 /**
  * Created by Shufeng.Wu on 2016/12/11.
@@ -36,6 +27,7 @@ public class LinearLayoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_linearlayout, container, false);
         initData();
+
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         //设置布局管理器
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -50,23 +42,48 @@ public class LinearLayoutFragment extends Fragment {
         //默认ItemAnimator
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //第三方ItemAnimator:左侧滑入滑出
-        //recyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(recyclerView));
+        //Slide
+        //recyclerView.setItemAnimator(new SlideInLeftAnimator());
+        //recyclerView.setItemAnimator(new SlideInRightAnimator());
+        //recyclerView.setItemAnimator(new SlideInUpAnimator());
+        //recyclerView.setItemAnimator(new SlideInDownAnimator());
+        //recyclerView.setItemAnimator(new OvershootInLeftAnimator());
+        //recyclerView.setItemAnimator(new OvershootInRightAnimator());
 
-        //第三方ItemAnimator:右侧滑入滑出
-        //recyclerView.setItemAnimator(new SlideInOutRightItemAnimator(recyclerView));
+        //Scale
+        //recyclerView.setItemAnimator(new ScaleInAnimator());
+        //recyclerView.setItemAnimator(new ScaleInTopAnimator());
+        //recyclerView.setItemAnimator(new ScaleInBottomAnimator());
+        //recyclerView.setItemAnimator(new ScaleInLeftAnimator());
+        //recyclerView.setItemAnimator(new ScaleInRightAnimator());
 
-        //第三方ItemAnimator:顶部滑入滑出
-        //recyclerView.setItemAnimator(new SlideInOutTopItemAnimator(recyclerView));
+        //Cool
+        //recyclerView.setItemAnimator(new LandingAnimator());
 
-        //第三方ItemAnimator:底部滑入滑出
-        //recyclerView.setItemAnimator(new SlideInOutBottomItemAnimator(recyclerView));
+        //Flip
+        //recyclerView.setItemAnimator(new FlipInTopXAnimator());
+        //recyclerView.setItemAnimator(new FlipInBottomXAnimator());
+        //recyclerView.setItemAnimator(new FlipInLeftYAnimator());
+        //recyclerView.setItemAnimator(new FlipInRightYAnimator());
 
-        //第三方ItemAnimator:缩放
-        //recyclerView.setItemAnimator(new ScaleInOutItemAnimator(recyclerView));
+        //Fade
+        //recyclerView.setItemAnimator(new FadeInAnimator());
+        //FadeInDownAnimator
+        //recyclerView.setItemAnimator(new FadeInDownAnimator());
+        //FadeInUpAnimator
+        //recyclerView.setItemAnimator(new FadeInUpAnimator());
+        //FadeInLeftAnimator
+        //recyclerView.setItemAnimator(new FadeInLeftAnimator());
+        //FadeInRightAnimator
+        recyclerView.setItemAnimator(new FadeInRightAnimator());
 
         //第三方ItemAnimator:右侧滑入滑出并缩放
-        recyclerView.setItemAnimator(new SlideScaleInOutRightItemAnimator(recyclerView));
+        //recyclerView.setItemAnimator(new SlideScaleInOutRightItemAnimator(recyclerView));
+
+        recyclerView.getItemAnimator().setAddDuration(300);
+        recyclerView.getItemAnimator().setRemoveDuration(300);
+        recyclerView.getItemAnimator().setMoveDuration(300);
+        recyclerView.getItemAnimator().setChangeDuration(300);
 
         //开源库RecyclerItemClickSupport实现OnItemClickListener
         /*RecyclerItemClickSupport.addTo(recyclerView).setOnItemClickListener(new RecyclerItemClickSupport.OnItemClickListener() {
@@ -116,11 +133,11 @@ public class LinearLayoutFragment extends Fragment {
         recyclerAdapter.removeData(position);
     }
 
-    /*public class LinearRecyclerAdapter extends RecyclerView.Adapter<LinearRecyclerAdapter.MyViewHolder> {
+    /*public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
 
         @Override
-        public LinearRecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             MyViewHolder holder = new MyViewHolder(LayoutInflater.from(getActivity()).inflate(R.layout.item_recyclerview, parent, false));
             return holder;
         }
@@ -158,9 +175,5 @@ public class LinearLayoutFragment extends Fragment {
                 notifyItemRemoved(position);
             }
         }
-
-        *//*public interface OnItemClickListener{
-            void onItemClick(View view, int position);
-        }*//*
     }*/
 }

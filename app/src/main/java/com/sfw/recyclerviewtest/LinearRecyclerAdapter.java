@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,12 +24,11 @@ public class LinearRecyclerAdapter extends RecyclerView.Adapter<LinearRecyclerAd
         return this.mDatas;
     }
 
-    public void setOnItemClickLitener(OnItemClickListener mOnItemClickListener)
-    {
+    public void setOnItemClickLitener(OnItemClickListener mOnItemClickListener) {
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
-    public LinearRecyclerAdapter(Context context,List<String> mDatas) {
+    public LinearRecyclerAdapter(Context context, List<String> mDatas) {
         this.mDatas = mDatas;
         this.context = context;
     }
@@ -49,14 +47,14 @@ public class LinearRecyclerAdapter extends RecyclerView.Adapter<LinearRecyclerAd
                 @Override
                 public void onClick(View v) {
                     //
-                    mOnItemClickListener.onItemClick(holder.tv,position);
+                    mOnItemClickListener.onItemClick(holder.tv, position);
                 }
             });
-            holder.tv.setOnLongClickListener(new View.OnLongClickListener(){
+            holder.tv.setOnLongClickListener(new View.OnLongClickListener() {
 
                 @Override
                 public boolean onLongClick(View v) {
-                    mOnItemClickListener.onItemLongClick(v,position);
+                    mOnItemClickListener.onItemLongClick(v, position);
                     return true;
                 }
             });
@@ -82,6 +80,7 @@ public class LinearRecyclerAdapter extends RecyclerView.Adapter<LinearRecyclerAd
         if (position <= mDatas.size()) {
             mDatas.add(position, "New One");
             notifyItemInserted(position);
+
         }
     }
 
@@ -92,7 +91,7 @@ public class LinearRecyclerAdapter extends RecyclerView.Adapter<LinearRecyclerAd
         }
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
         void onItemLongClick(View view, int position);
     }

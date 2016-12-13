@@ -16,8 +16,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        //第三方ItemAnimator
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
