@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutFragment llf = null;
     GridLayoutFragment glf = null;
     StaggeredGridLayoutFragment sglf = null;
+    CustomLinearLayoutFragment cllf = null;
 
     int fragment_number = 1;
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(Menu.NONE, Menu.FIRST + 1, 1, "LinearLayoutManager");
         menu.add(Menu.NONE, Menu.FIRST + 2, 2, "GridLayoutManager");
         menu.add(Menu.NONE, Menu.FIRST + 3, 3, "StaggeredGridLayoutManager");
+        menu.add(Menu.NONE, Menu.FIRST + 4, 4, "Custom");
         return true;
     }
 
@@ -65,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 translation.replace(R.id.container, sglf);
                 fragment_number = 3;
                 break;
+            case Menu.FIRST + 4:
+                cllf = new CustomLinearLayoutFragment();
+                translation.replace(R.id.container, cllf);
+                fragment_number = 4;
+                break;
             case R.id.menu_add:
                 if (fragment_number == 1) {
                     llf.addData(5);
@@ -72,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     glf.addData(5);
                 } else if (fragment_number == 3) {
 
+                } else if (fragment_number == 4) {
+                    cllf.addData(5);
                 }
                 break;
             case R.id.menu_delete:
@@ -81,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                     glf.removeData(5);
                 } else if (fragment_number == 3) {
 
+                } else if (fragment_number == 4) {
+                    cllf.removeData(5);
                 }
                 break;
         }
